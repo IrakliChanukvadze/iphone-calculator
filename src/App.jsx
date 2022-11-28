@@ -11,6 +11,9 @@ function App() {
   };
 
   const clicked = (value) => {
+    if (value === "X") {
+      value = "*";
+    }
     if (
       number.length > 1 &&
       /[+*/%-]/.test(number[number.length - 1]) &&

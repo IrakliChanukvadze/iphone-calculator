@@ -6,7 +6,7 @@ export default [
   { value: 9, className: "dark" },
   { value: 8, className: "dark" },
   { value: 7, className: "dark" },
-  { value: "*", className: "yellow" },
+  { value: "X", className: "yellow" },
   { value: "6", className: "dark" },
   { value: "5", className: "dark" },
   { value: "4", className: "dark" },
