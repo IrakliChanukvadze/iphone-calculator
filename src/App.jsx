@@ -3,14 +3,27 @@ import "./App.css";
 import buttons from "./data/ButtonData";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [number, setNumber] = useState("0");
   const [reseted, setReseted] = useState(false);
-  const makeTotal = () => {
-    setNumber(eval(number));
+  const makeTotal = (item) => {
+    setNumber(eval(number).toFixed(2));
+    if (item) {
+      setNumber((prev) => prev - prev * 2);
+    }
   };
 
   const clicked = (value) => {
+    if (
+      value === "+/-" &&
+      number != 0 &&
+      !/[+*/-]/.test(number[number.length - 1])
+    ) {
+      if (/[+*/%-]/.test(number[number.length - 1])) {
+        return;
+      }
+      makeTotal("Change-Positivity");
+      return;
+    }
     if (value === "X") {
       value = "*";
     }
@@ -40,11 +53,10 @@ function App() {
       return;
     }
 
-    // if (!number && /[+*/-]/.test(value)) {
-    //   return;
-    // }
-
     if (value === "=") {
+      if (/[+*/%-]/.test(number[number.length - 1])) {
+        return;
+      }
       if (number.match(/[+-/%*]/)) {
         setReseted(true);
       }
