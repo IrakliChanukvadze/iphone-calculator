@@ -1,0 +1,99 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.number {
+  color: white;
+  position: absolute;
+  top: 110px;
+  font-size: 2rem;
+  right: 37.5px;
+}
+
+.calculator-container {
+  background-image: url(./assets/iphone.png);
+  background-size: contain;
+  width: 250px;
+  height: 500px;
+  box-sizing: border-box;
+
+  position: relative;
+}
+
+.calc {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 7px;
+  position: absolute;
+  left: 25px;
+  top: 180px;
+  width: 200px;
+  box-sizing: border-box;
+}
+.calc-button {
+  border: none;
+  width: 43px;
+  height: 43px;
+  background-color: rgb(122, 38, 38);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.zero {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: #333333;
+  border-left: 0.1px solid #333333;
+  border-radius: 50% 0% 0% 50%;
+}
+.zero-squarer {
+  background-color: #333333;
+  width: 50px;
+  height: 43px;
+  position: absolute;
+  left: 42px;
+  border-radius: 0% 50% 50% 0%;
+}
+.grey {
+  background-color: #a5a5a5;
+  color: black;
+  font-weight: 700;
+
+  border-radius: 50%;
+}
+
+.yellow {
+  background-color: #fe9f09;
+  color: white;
+
+  border-radius: 50%;
+}
+
+.dark {
+  background-color: #333333;
+  color: white;
+
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: spin infinite 20s linear;
+  }
+}
