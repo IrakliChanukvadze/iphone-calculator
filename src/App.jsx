@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import buttons from "./data/ButtonData";
 
 function App() {
   const [number, setNumber] = useState("0");
   const [reseted, setReseted] = useState(false);
+
+  useEffect(() => {
+    const keyBoard = (value) => {
+      if (/[1-9+*/%-=]/.test(value.key)) {
+        clicked(value.key);
+      }
+      if (value.key === "Enter") {
+        clicked("=");
+      }
+    };
+    window.addEventListener("keypress", keyBoard);
+
+    return () => {
+      window.removeEventListener("keypress", keyBoard);
+    };
+  });
+
   const makeTotal = (item) => {
     setNumber(eval(number).toFixed(2));
     if (item) {
@@ -13,6 +30,13 @@ function App() {
   };
 
   const clicked = (value) => {
+    if (value === "+/-" && number === "0") {
+      return;
+    }
+    if (value === ",") {
+      console.log("entered");
+      value = ".";
+    }
     if (
       value === "+/-" &&
       number != 0 &&
@@ -37,8 +61,6 @@ function App() {
       return;
     }
     if (number === "0" && /[0-9]/.test(value)) {
-      console.log(value);
-
       setNumber(`${value}`);
       return;
     }
